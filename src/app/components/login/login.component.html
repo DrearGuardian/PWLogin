@@ -1,0 +1,55 @@
+<div class="fondo">
+  <mat-card class="card" appearance="outlined">
+
+    <mat-card-header class="titulo" >
+      <mat-card-title >Inicio de sesión</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-form-field >
+          <mat-label>Correo Electronico</mat-label>
+          <input
+            matInput
+            placeholder="ejemplo@example.com"
+            [formControl]="email"
+            (blur)="updateErrorMessage()"
+            required
+          />
+          <button
+          mat-icon-button
+          matSuffix
+          [attr.aria-label]="'Correo electrónico'"
+        >
+          <mat-icon>email</mat-icon>
+        </button>
+         @if (email.invalid) {
+                <mat-error>{{errorMessage()}}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Contraseña</mat-label>
+              <input
+              [formControl]="password"
+              matInput [type]="hide() ? 'password' : 'text'" />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="clickEvent($event)"
+
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()"
+              >
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+            <mat-error>{{errorgralMessage()}}</mat-error>
+             <mat-card-actions>
+              <button class="boton"
+              type="submit"
+              (click)="login()"
+                >Ingresar</button>
+              </mat-card-actions>
+
+    </mat-card-content>
+  </mat-card>
+</div>
